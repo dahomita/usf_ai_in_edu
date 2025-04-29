@@ -45,9 +45,17 @@ export default function TeachingPage() {
     },
   ]
 
-  const renderCourseList = (courses) => (
+  type Course = {
+    id: number
+    code: string
+    title: string
+    semester: string
+    description: string
+  }
+
+  const renderCourseList = (courses: Course[]) => (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {courses.map((course) => (
+      {courses.map((course: Course) => (
         <Card key={course.id}>
           <CardHeader>
             <div className="flex justify-between">

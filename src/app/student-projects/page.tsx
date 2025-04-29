@@ -59,9 +59,19 @@ export default function StudentProjectsPage() {
     },
   ]
 
-  const renderProjectList = (projects) => (
+  type Project = {
+    id: number
+    title: string
+    student: string
+    level: string
+    year: string
+    description: string
+    image: string
+  }
+
+  const renderProjectList = (projects: Project[]) => (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {projects.map((project) => (
+      {projects.map((project: Project) => (
         <Card key={project.id}>
           <div className="relative h-48">
             <Image

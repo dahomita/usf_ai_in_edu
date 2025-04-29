@@ -3,7 +3,17 @@ import { ExternalLink } from "lucide-react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 export default function PublicationsPage() {
-  const publications = [
+  type Publication = {
+    id: number
+    title: string
+    authors: string
+    journal: string
+    year: number
+    doi: string
+    type: "journal" | "conference" | "book"
+  }
+
+  const publications: Publication[] = [
     {
       id: 1,
       title: "Publication Title 1",
@@ -55,9 +65,9 @@ export default function PublicationsPage() {
   const conferencePublications = publications.filter((pub) => pub.type === "conference")
   const bookPublications = publications.filter((pub) => pub.type === "book")
 
-  const renderPublicationList = (pubList) => (
+  const renderPublicationList = (pubList: Publication[]) => (
     <div className="space-y-6">
-      {pubList.map((pub) => (
+      {pubList.map((pub: Publication) => (
         <div key={pub.id} className="p-4 border rounded-lg hover:bg-gray-50">
           <h3 className="font-semibold text-lg">{pub.title}</h3>
           <p className="text-gray-600 mb-2">{pub.authors}</p>
